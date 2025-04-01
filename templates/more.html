@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More Courses</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <nav>
+        <div><a href="{{ url_for('index') }}" style="text-decoration: none;" class="logo">WEB-INTER-PREP</a></div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('resume_template')}}">Resume Template</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="{{ url_for('register') }}" id="register-link">Register</a></li>
+            <!-- Link to the register page -->
+        </ul>
+    </nav>
+    <section id="categories">
+        <h2>Various Courses</h2>
+        <div class="category-container">
+            <div class="category-card" onclick="coursedsa('coursedsa')">Course For DSA</div>
+            <div class="category-card" onclick="courseweb('courseweb')">Course For WEB-DEV</div>
+            <div class="category-card" onclick="courseapp('courseapp')">Course For APP-DEV</div>
+            <div class="category-card" onclick="courseaiml('courseaiml')">Course For AIML</div>
+            <div class="category-card" onclick="coursemern('coursemern')">Course For MERN</div>
+            <div class="category-card" onclick="coursemean('coursemean')">Course For MEAN</div>
+            <div class="category-card" onclick="coursephp('coursephp')">Course For PHP</div>
+            <div class="category-card" onclick="courseCpp('coursecpp')">Course For C++</div>
+        </div>
+    </section>
+
+    <hr class="styled-hr">
+
+    <section id="streams">
+        <h2>Streams</h2>
+        <div class="category-container">
+            <div class="category-card" onclick="problemDSA('problem-solving-DSA')">Problem Solving DSA</div>
+            <div class="category-card" onclick="problemWeb('problem-solving-web')">Problem Solving Web-dev</div>
+            <div class="category-card" onclick="problemApp('problem-solving-app')">Problem Solving App-dev</div>
+            <div class="category-card" onclick="problemAIML('aiml')">Problem Solving AIML</div>
+            <div class="category-card" onclick="problemMern('problem-solving-mern')">Problem Solving Mern-Stack</div>
+            <div class="category-card" onclick="problemMean('problem-solving-mean')">Problem Solving Mean-Stack</div>
+            <div class="category-card" onclick="problemphp('problem-solving-php')">Problem Solving PHP</div>
+            <div class="category-card" onclick="problemCpp('problem-solving-cpp')">Problem Solving C++</div>
+
+        </div>
+    </section>
+    <footer id="contact">
+        <h3>Contact Us</h3>
+        <p>Email: <a href="mailto:support@webinterprep.com">support@webinterprep.com</a></p>
+        <p>Phone: <a href="tel:+1234567890">+123 456 7890</a></p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        function problemDSA() {
+            let link = document.createElement('a');
+            link.href = "{{ url_for('static', filename='100Problem.pdf') }}"; // Correct Flask static URL
+            link.download = '100ProblemDSA.pdf'; // File name
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        function problemWeb() {
+            let link = document.createElement('a');
+            link.href = "{{ url_for('static', filename='web_dev_100_questions.pdf') }}"; // Correct Flask static URL
+            link.download = '100ProblemWEB.pdf'; // File name
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        function problemApp() {
+            let link = document.createElement('a');
+            link.href = "{{ url_for('static', filename='100problemApp.pdf') }}"; // Correct Flask static URL
+            link.download = '100ProblemAPP.pdf'; // File name
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        function problemAIML() {
+            let link = document.createElement('a');
+            link.href = "{{ url_for('static', filename='100AIML.pdf') }}"; // Correct Flask static URL
+            link.download = '100ProblemAIML.pdf'; // File name
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        function problemMern(){
+            let link = document.createElement('a');
+            link.href = "{{ url_for('static', filename='100problemmern.pdf') }}"; // Correct Flask static URL
+            link.download = '100ProblemMERN.pdf'; // File name
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        function problemMean(){
+            let link = document.createElement('a');
+            link.href = "{{ url_for('static', filename='100problemmean.pdf') }}"; // Correct Flask static URL
+            link.download = '100ProblemMEAN.pdf'; // File name
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        function problemphp(){
+            let link = document.createElement('a');
+            link.href = "{{ url_for('static', filename='100problemphp.pdf') }}"; 
+            link.download = '100ProblemPHP.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        function problemCpp(){
+            let link = document.createElement('a');
+            link.href = "{{ url_for('static', filename='100problemcpp.pdf') }}";
+            link.download = '100ProblemCPP.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        function coursedsa() {
+            let link = document.createElement('a');
+            link.href = "https://www.youtube.com/watch?v=yRpLlJmRo2w&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop";
+            link.target = "_blank";  // Opens link in a new tab
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }        
+        function courseweb(){
+            let link = document.createElement('a');
+            lin.href = "https://www.youtube.com/watch?v=tVzUXW6siu0&list=PLu0W_9lII9agq5TrH9XLIKQvv0iaF2X3w";
+            link.target = "_blank";  // Opens link in a new tab
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        function courseapp(){
+            let link = document.createElement('a');
+            link.href = "https://www.youtube.com/watch?v=HyU4vkZ2NB8&list=PLjVLYmrlmjGdDps6HAwOOVoAtBPAgIOXL";
+            link.target = "_blank";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        function courseaiml(){
+            let link = document.createElement('a');
+            link.href = "https://www.youtube.com/watch?v=O0Ka_nBRtN0";
+            link.target = "_blank";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        /**function morecourse(){
+            let link = document.createElement('a');
+            link.href = "{{ url_for('more') }}"
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }**/
+        function coursemern(){
+            let link = document.createElement('a');
+            link.href = "https://www.youtube.com/watch?v=Vi9bxu-M-ag&list=PLDzeHZWIZsTo0wSBcg4-NMIbC0L8evLrD";
+            link.target = "_blank";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        function coursemean(){
+            let link = document.createElement('a');
+            link.href = "https://www.youtube.com/watch?v=48SUuk8e55c";
+            link.target = "_blank";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        function coursephp(){
+            let link = document.createElement('a');
+            link.href = 'https://www.youtube.com/watch?v=D4DXbRsQAOA&list=PL8p2I9GklV44cSOlKzB_0TrzxEgwfvicK';
+            link.target = "_blank";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        function courseCpp(){
+            let link = document.createElement('a');
+            link.href = 'https://www.youtube.com/watch?v=e7sAf4SbS_g'
+            link.target = "_blank";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB-INTER-PREP</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div><a href="{{ url_for('index') }}" style="text-decoration: none;" class="logo">WEB-INTER-PREP</a></div>
+        <div class="nav-links">
+            <a href="{{ url_for('resume_template')}}" class="nav-item"><i class="fas fa-file-alt"></i> Resume Template</a>
+            <a href="#contact" class="nav-item"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="{{ url_for('register') }}" id="register-link" class="nav-item"><i class="fas fa-user-plus"></i> Register</a>
+        </div>
+        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+    </nav>
+
+    <!-- Hero Section with Animated Elements -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1 class="animated-color">Prepare for Your Next Interview</h1>
+            <p class="hero-subtitle">Master the skills that will make you stand out</p>
+            <a href="{{ url_for('register') }}" class="btn animated-color">
+                <span>Start Now</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        <div class="hero-graphics">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="section-header">
+            <h2>Why Choose Us?</h2>
+            <p>Comprehensive resources to boost your interview preparation</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>Technical Prep</h3>
+                <p>Master algorithms, data structures, and coding challenges</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-comments"></i></div>
+                <h3>Behavioral Skills</h3>
+                <p>Practice answering common interview questions</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Progress Tracking</h3>
+                <p>Monitor your improvement over time</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-building"></i></div>
+                <h3>Company Specific</h3>
+                <p>Tailored preparation for top companies</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section with Interactive Cards -->
+    <section id="categories">
+        <h2>Various Courses</h2>
+        <div class="category-container">
+            <div class="category-card" onclick="coursedsa('coursedsa')">
+                <div class="card-icon"><i class="fas fa-code"></i></div>
+                <div class="card-title">Course For DSA</div>
+                <div class="card-overlay">
+                    <span>Explore DSA</span>
+                </div>
+            </div>
+            <div class="category-card" onclick="courseweb('courseweb')">
+                <div class="card-icon"><i class="fas fa-globe"></i></div>
+                <div class="card-title">Course For WEB-DEV</div>
+                <div class="card-overlay">
+                    <span>Explore Web Development</span>
+                </div>
+            </div>
+            <div class="category-card" onclick="courseapp('courseapp')">
+                <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+                <div class="card-title">Course For APP-DEV</div>
+                <div class="card-overlay">
+                    <span>Explore App Development</span>
+                </div>
+            </div>
+            <div class="category-card" onclick="courseaiml('courseaiml')">
+                <div class="card-icon"><i class="fas fa-brain"></i></div>
+                <div class="card-title">Course For AIML</div>
+                <div class="card-overlay">
+                    <span>Explore AI/ML</span>
+                </div>
+            </div>
+            <div class="category-card" onclick="morecourse('other')">
+                <div class="card-icon"><i class="fas fa-plus-circle"></i></div>
+                <div class="card-title">More Courses</div>
+                <div class="card-overlay">
+                    <span>Discover More</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="styled-hr"></div>
+
+    <!-- Streams Section with Interactive Cards -->
+    <section id="streams">
+        <h2>Streams</h2>
+        <div class="category-container">
+            <div class="category-card" onclick="problemDSA('problem-solving-DSA')">
+                <div class="card-icon"><i class="fas fa-puzzle-piece"></i></div>
+                <div class="card-title">Problem Solving DSA</div>
+                <div class="card-overlay">
+                    <span>100 DSA Problems</span>
+                </div>
+            </div>
+            <div class="category-card" onclick="problemWeb('problem-solving-web')">
+                <div class="card-icon"><i class="fas fa-code"></i></div>
+                <div class="card-title">Problem Solving Web-dev</div>
+                <div class="card-overlay">
+                    <span>100 Web Dev Problems</span>
+                </div>
+            </div>
+            <div class="category-card" onclick="problemApp('problem-solving-app')">
+                <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+                <div class="card-title">Problem Solving App-dev</div>
+                <div class="card-overlay">
+                    <span>100 App Dev Problems</span>
+                </div>
+            </div>
+            <div class="category-card" onclick="problemAIML('aiml')">
+                <div class="card-icon"><i class="fas fa-robot"></i></div>
+                <div class="card-title">Problem Solving AIML</div>
+                <div class="card-overlay">
+                    <span>100 AI/ML Problems</span>
+                </div>
+            </div>
+            <div class="category-card" onclick="morecourse('other')">
+                <div class="card-icon"><i class="fas fa-plus-circle"></i></div>
+                <div class="card-title">More Streams</div>
+                <div class="card-overlay">
+                    <span>Discover More</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="section-header">
+            <h2>Success Stories</h2>
+            <p>Hear from our community members who landed their dream jobs</p>
+        </div>
+        <div class="testimonial-slider">
+            <div class="testimonial-slide">
+                <div class="testimonial-content">
+                    <div class="quote"><i class="fas fa-quote-left"></i></div>
+                    <p>This platform helped me crack my interview at Google! The DSA problems were exactly what I needed.</p>
+                    <div class="testimonial-author">
+                        <div class="author-name">Sarah J.</div>
+                        <div class="author-role">Software Engineer at Google</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-slide">
+                <div class="testimonial-content">
+                    <div class="quote"><i class="fas fa-quote-left"></i></div>
+                    <p>The company-specific preparation was a game-changer. I felt confident walking into my Amazon interview.</p>
+                    <div class="testimonial-author">
+                        <div class="author-name">Michael T.</div>
+                        <div class="author-role">Backend Developer at Amazon</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-slide">
+                <div class="testimonial-content">
+                    <div class="quote"><i class="fas fa-quote-left"></i></div>
+                    <p>The web development resources helped me showcase my portfolio in the best way possible!</p>
+                    <div class="testimonial-author">
+                        <div class="author-name">Jessica M.</div>
+                        <div class="author-role">Frontend Engineer at Meta</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-navigation">
+                <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <footer id="contact">
+        <h3>Contact Us</h3>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                <p>Email: <a href="mailto:support@webinterprep.com">support@webinterprep.com</a></p>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                <p>Phone: <a href="tel:+1234567890">+123 456 7890</a></p>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <p>Location: Digital Avenue, Tech City</p>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+        </div>
+        <div class="copyright">
+            <p>© 2025 WEB-INTER-PREP. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Testimonial slider functionality
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.display = i === index ? 'block' : 'none';
+            });
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        });
+
+        // Initialize the slider
+        showSlide(currentSlide);
+
+        // Original functions
+        function startPreparation() {
+            window.location.href = "{{ url_for('register') }}";
+        }
+        
+        function problemDSA() {
+            let link = document.createElement('a');
+            link.href = "{{ url_for('static', filename='100Problem.pdf') }}"; // Correct Flask static URL
+            link.download = '100ProblemDSA.pdf'; // File name
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        function problemWeb() {
+            let link = document.createElement('a');
+            link.href = "{{ url_for('static', filename='web_dev_100_questions.pdf') }}"; // Correct Flask static URL
+            link.download = '100ProblemWEB.pdf'; // File name
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        function problemApp() {
+            let link = document.createElement('a');
+            link.href = "{{ url_for('static', filename='100problemApp.pdf') }}"; // Correct Flask static URL
+            link.download = '100ProblemAPP.pdf'; // File name
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        function problemAIML() {
+            let link = document.createElement('a');
+            link.href = "{{ url_for('static', filename='100AIML.pdf') }}"; // Correct Flask static URL
+            link.download = '100ProblemAIML.pdf'; // File name
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        function coursedsa() {
+            let link = document.createElement('a');
+            link.href = "https://www.youtube.com/watch?v=yRpLlJmRo2w&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop";
+            link.target = "_blank";  // Opens link in a new tab
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }        
+        
+        function courseweb() {
+            let link = document.createElement('a');
+            link.href = "https://www.youtube.com/watch?v=tVzUXW6siu0&list=PLu0W_9lII9agq5TrH9XLIKQvv0iaF2X3w";
+            link.target = "_blank";  // Opens link in a new tab
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        function courseapp() {
+            let link = document.createElement('a');
+            link.href = "https://www.youtube.com/watch?v=HyU4vkZ2NB8&list=PLjVLYmrlmjGdDps6HAwOOVoAtBPAgIOXL";
+            link.target = "_blank";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        function courseaiml() {
+            let link = document.createElement('a');
+            link.href = "https://www.youtube.com/watch?v=O0Ka_nBRtN0";
+            link.target = "_blank";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        function morecourse() {
+            let link = document.createElement('a');
+            link.href = "{{ url_for('more') }}";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Adding animation to category cards
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.classList.add('animated');
+            });
+            card.addEventListener('mouseleave', function() {
+                this.classList.remove('animated');
+            });
+        });
+    </script>
+</body>
+
+</html>

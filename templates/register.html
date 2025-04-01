@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - WEB-INTER-PREP</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <div><a href="{{ url_for('index') }}" style="text-decoration: none;" class="logo">WEB-INTER-PREP</a></div>
+    <div class="nav-links">
+      <a href="{{ url_for('resume_template')}}" class="nav-item"><i class="fas fa-file-alt"></i> Resume Template</a>
+      <a href="#contact" class="nav-item"><i class="fas fa-envelope"></i> Contact</a>
+      <a href="{{ url_for('login') }}" class="nav-item"><i class="fas fa-sign-in-alt"></i> Login</a>
+    </div>
+    <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+  </nav>
+
+  <!-- Registration Section -->
+  <section class="auth-section">
+    <div class="auth-container">
+      <div class="auth-card">
+        <div class="auth-header">
+          <h2>Create an Account</h2>
+          <p>Join our community and start your interview preparation journey</p>
+        </div>
+        
+        <form method="POST" action="" class="auth-form">
+          {{ form.hidden_tag() }}
+          
+          <div class="form-group">
+            <label for="name"><i class="fas fa-user"></i> {{ form.name.label.text }}</label>
+            {{ form.name(class='form-control', placeholder='Enter your full name') }}
+            {% for error in form.name.errors %}
+            <div class="form-error"><i class="fas fa-exclamation-circle"></i> {{ error }}</div>
+            {% endfor %}
+          </div>
+          
+          <div class="form-group">
+            <label for="email"><i class="fas fa-envelope"></i> {{ form.email.label.text }}</label>
+            {{ form.email(class='form-control', placeholder='Enter your email address') }}
+            {% for error in form.email.errors %}
+            <div class="form-error"><i class="fas fa-exclamation-circle"></i> {{ error }}</div>
+            {% endfor %}
+          </div>
+          
+          <div class="form-group">
+            <label for="password"><i class="fas fa-lock"></i> {{ form.password.label.text }}</label>
+            {{ form.password(class='form-control', placeholder='Choose a strong password') }}
+            {% for error in form.password.errors %}
+            <div class="form-error"><i class="fas fa-exclamation-circle"></i> {{ error }}</div>
+            {% endfor %}
+          </div>
+          
+          <div class="form-group">
+            {{ form.submit(class='btn btn-auth') }}
+          </div>
+        </form>
+        
+        <div class="auth-footer">
+          <p>Already have an account? <a href="{{ url_for('login') }}">Sign in</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <h3>Contact Us</h3>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <i class="fas fa-envelope contact-icon"></i>
+        <p>support@webinterprep.com</p>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-phone contact-icon"></i>
+        <p>+123 456 7890</p>
+      </div>
+    </div>
+    <div class="social-links">
+      <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p class="copyright">© 2023 WEB-INTER-PREP. All rights reserved.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

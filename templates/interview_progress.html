@@ -1,0 +1,155 @@
+{% extends "layout.html" %}
+
+{% block title %}Interview Progress Tracking{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Interview Progress Tracking</h1>
+    
+    <!-- Track New Interview Form -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h3>Add New Interview</h3>
+        </div>
+        <div class="card-body">
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            {{ form.company.label(class="form-label") }}
+                            {{ form.company(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            {{ form.position.label(class="form-label") }}
+                            {{ form.position(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            {{ form.date.label(class="form-label") }}
+                            {{ form.date(class="form-control", type="date") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            {{ form.status.label(class="form-label") }}
+                            {{ form.status(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-3" id="performance-field" style="display: none;">
+                    <div class="form-group">
+                        {{ form.performance.label(class="form-label") }}
+                        {{ form.performance(class="form-control") }}
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <div class="form-group">
+                        {{ form.notes.label(class="form-label") }}
+                        {{ form.notes(class="form-control", rows=3) }}
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-primary w-100") }}
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Interview History -->
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h3>Your Interview History</h3>
+        </div>
+        <div class="card-body">
+            {% if interviews %}
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Position</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Performance</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for interview in interviews %}
+                                <tr>
+                                    <td>{{ interview.company }}</td>
+                                    <td>{{ interview.position }}</td>
+                                    <td>{{ interview.date.strftime('%Y-%m-%d') }}</td>
+                                    <td>
+                                        <span class="badge 
+                                            {% if interview.status == 'Upcoming' %}bg-info
+                                            {% elif interview.status == 'Completed' %}bg-primary
+                                            {% elif interview.status == 'Rejected' %}bg-danger
+                                            {% elif interview.status == 'Offered' %}bg-success
+                                            {% endif %}">
+                                            {{ interview.status }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        {% if interview.performance %}
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" role="progressbar" 
+                                                    style="width: {{ interview.performance * 10 }}%" 
+                                                    aria-valuenow="{{ interview.performance }}" 
+                                                    aria-valuemin="0" aria-valuemax="10">
+                                                    {{ interview.performance }}/10
+                                                </div>
+                                            </div>
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a href="{{ url_for('edit_interview', id=interview.id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                        <form action="{{ url_for('delete_interview', id=interview.id) }}" method="POST" class="d-inline">
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this interview?')">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="alert alert-info">
+                    You haven't added any interviews yet. Start tracking your progress by adding your first interview above.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+    // Show/hide performance field based on status
+    document.addEventListener('DOMContentLoaded', function() {
+        const statusField = document.querySelector('#status');
+        const performanceField = document.querySelector('#performance-field');
+        
+        function togglePerformanceField() {
+            if (statusField.value === 'Completed') {
+                performanceField.style.display = 'block';
+            } else {
+                performanceField.style.display = 'none';
+            }
+        }
+        
+        togglePerformanceField();
+        statusField.addEventListener('change', togglePerformanceField);
+    });
+</script>
+{% endblock %} 

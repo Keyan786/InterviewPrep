@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block title %}Edit Interview{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Edit Interview</h1>
+    
+    <div class="card">
+        <div class="card-header bg-warning text-dark">
+            <h3>Update Interview Details</h3>
+        </div>
+        <div class="card-body">
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            {{ form.company.label(class="form-label") }}
+                            {{ form.company(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            {{ form.position.label(class="form-label") }}
+                            {{ form.position(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            {{ form.date.label(class="form-label") }}
+                            {{ form.date(class="form-control", type="date") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            {{ form.status.label(class="form-label") }}
+                            {{ form.status(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-3" id="performance-field" style="display: none;">
+                    <div class="form-group">
+                        {{ form.performance.label(class="form-label") }}
+                        {{ form.performance(class="form-control") }}
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <div class="form-group">
+                        {{ form.notes.label(class="form-label") }}
+                        {{ form.notes(class="form-control", rows=3) }}
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-warning w-100") }}
+                </div>
+            </form>
+            
+            <div class="mt-3">
+                <a href="{{ url_for('interview_progress') }}" class="btn btn-secondary w-100">Back to Interviews</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Show/hide performance field based on status
+    document.addEventListener('DOMContentLoaded', function() {
+        const statusField = document.querySelector('#status');
+        const performanceField = document.querySelector('#performance-field');
+        
+        function togglePerformanceField() {
+            if (statusField.value === 'Completed') {
+                performanceField.style.display = 'block';
+            } else {
+                performanceField.style.display = 'none';
+            }
+        }
+        
+        togglePerformanceField();
+        statusField.addEventListener('change', togglePerformanceField);
+    });
+</script>
+{% endblock %} 

@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+
+{% block title %}Company-Specific Preparation{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Company-Specific Preparation</h1>
+    
+    <div class="row">
+        <!-- Left Column: Add new question -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <h3>Add Question</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {{ form.hidden_tag() }}
+                        <div class="mb-3">
+                            <div class="form-group">
+                                {{ form.company.label(class="form-label") }}
+                                {{ form.company(class="form-control") }}
+                                <small class="text-muted">Enter company name (e.g., Google, Amazon, Microsoft)</small>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="form-group">
+                                {{ form.category.label(class="form-label") }}
+                                {{ form.category(class="form-control") }}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="form-group">
+                                {{ form.question.label(class="form-label") }}
+                                {{ form.question(class="form-control", rows=5) }}
+                                <small class="text-muted">Enter the question and any relevant details</small>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-primary w-100") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Column: Browse questions by company -->
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3>Browse Interview Questions</h3>
+                </div>
+                <div class="card-body">
+                    <!-- Company selection -->
+                    <div class="mb-4">
+                        <h4>Select Company</h4>
+                        <div class="d-flex flex-wrap gap-2">
+                            {% for company in companies %}
+                                <a href="{{ url_for('company_questions', company=company) }}" 
+                                   class="btn {% if company == selected_company %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                                   {{ company }}
+                                </a>
+                            {% endfor %}
+                            {% if companies %}
+                                <a href="{{ url_for('company_questions') }}" class="btn btn-outline-secondary">Show All</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <!-- Questions list -->
+                    {% if selected_company %}
+                        <h4>{{ selected_company }} Interview Questions</h4>
+                        {% if questions %}
+                            <div class="accordion" id="questionAccordion">
+                                {% for question in questions %}
+                                    <div class="accordion-item mb-2">
+                                        <h2 class="accordion-header" id="heading{{ question.id }}">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                                    data-bs-target="#collapse{{ question.id }}" aria-expanded="false" 
+                                                    aria-controls="collapse{{ question.id }}">
+                                                <span class="badge bg-secondary me-2">{{ question.category }}</span>
+                                                {{ question.question|truncate(80) }}
+                                            </button>
+                                        </h2>
+                                        <div id="collapse{{ question.id }}" class="accordion-collapse collapse" 
+                                             aria-labelledby="heading{{ question.id }}" data-bs-parent="#questionAccordion">
+                                            <div class="accordion-body">
+                                                <p>{{ question.question }}</p>
+                                                <div class="d-flex justify-content-between">
+                                                    <span class="badge bg-info">Frequency: {{ question.frequency }}</span>
+                                                    <small class="text-muted">Category: {{ question.category }}</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="alert alert-info">
+                                No questions found for {{ selected_company }}. Be the first to add one!
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        {% if companies %}
+                            <div class="alert alert-info">
+                                Select a company from above to view questions.
+                            </div>
+                        {% else %}
+                            <div class="alert alert-info">
+                                No company questions have been added yet. Add your first question using the form.
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

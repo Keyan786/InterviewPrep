@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>DSA problem</title>
+</head>
+<body>
+    <nav>
+        <div ><a href="{{ url_for('index') }}" style="text-decoration: none;"class="logo">WEB-INTER-PREP</a></div>
+        <ul class="nav-links">
+            <li><a href="#categories">Resume Template</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="{{ url_for('register') }}" id="register-link">Register</a></li> <!-- Link to the register page -->
+        </ul>
+    </nav>
+    <div class="category-card" onclick="loadQuestions('problem-solving')">Problem Solving</div>
+    <section id="practice-questions">
+        <h2>Practice Questions</h2>
+        <div id="questions-container">
+            <!-- Questions will be loaded here by JavaScript -->
+        </div>
+    </section>
+    <script src="static/js/script.js">
+
+    </script>
+</body>
+</html>
