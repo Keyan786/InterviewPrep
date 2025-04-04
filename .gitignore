@@ -1,10 +1,13 @@
-# Python
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
+
+# C extensions
 *.so
+
+# Distribution / packaging
 .Python
-env/
 build/
 develop-eggs/
 dist/
@@ -16,45 +19,42 @@ lib64/
 parts/
 sdist/
 var/
+wheels/
 *.egg-info/
 .installed.cfg
 *.egg
 
-# Virtual environment
+# Virtual environments
+env/
 venv/
 ENV/
-env/
+.env
+.venv
+env.bak/
+venv.bak/
 
-# Flask
+# Flask stuff:
 instance/
 .webassets-cache
 
-# Database
+# SQLite database files
 *.db
-*.sqlite
 *.sqlite3
 
-# Editor files
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDE specific files
 .idea/
 .vscode/
 *.swp
 *.swo
+
+# OS generated files
 .DS_Store
-
-# Local development settings
-.env
-.flaskenv
-
-# Logs
-logs/
-*.log
-
-# OS specific files
-Thumbs.db
-.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
 ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
-
-# User uploaded content
-uploads/ 
+Thumbs.db 
